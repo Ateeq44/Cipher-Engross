@@ -18,19 +18,17 @@ get_header()
 								<div class="block-slider">
 									<div class="th90-slider" id="slider-13" data-settings='{&quot;loop&quot;:true,&quot;autoHeight&quot;:true,&quot;center&quot;:false,&quot;autoplay&quot;:true,&quot;nav&quot;:false,&quot;dots&quot;:false,&quot;fade&quot;:false,&quot;speed&quot;:500,&quot;delay&quot;:3000,&quot;t_view&quot;:3,&quot;view&quot;:4,&quot;ms_view&quot;:1,&quot;m_view&quot;:2,&quot;rtl&quot;:false,&quot;asNavFor&quot;:&quot;&quot;,&quot;vertical&quot;:false,&quot;focusOnSelect&quot;:false}'>
 										<div class="slider-wrap">
-											
 
-											<?php 
+											<div class="slick-slider">
 
-											while (have_posts()) {
-												the_post();
-                  								// $image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id());
+												<?php 
 
-												$image_id=get_post_thumbnail_id();
-												$image_url = wp_get_attachment_image_src($image_id,'img-polaroid');
-												$image_url=$image_url[0];
-												?>	
-												<div class="slick-slider">
+												while (have_posts()) {
+													the_post();
+													$image_id=get_post_thumbnail_id();
+													$image_url = wp_get_attachment_image_src($image_id,'img-polaroid');
+													$image_url=$image_url[0];
+													?>	
 													<div class="slider-item">
 														<div class="post-item cat-1">
 															<article class="post-layout small1 post-small format-standard">
@@ -60,8 +58,8 @@ get_header()
 															</article>
 														</div>
 													</div>
-												</div>
-											<?php } ?>
+												<?php } ?>
+											</div>
 
 										</div>
 									</div>
@@ -622,6 +620,7 @@ get_header()
 								</div>
 							</div>
 						</div>
+
 						<div class="elementor-element elementor-element-6a703ec elementor-widget elementor-widget-p-postsblog" data-id="6a703ec" data-element_type="widget" data-widget_type="p-postsblog.default">
 							<div class="elementor-widget-container">
 								<div id="th90-block_19" class="th90-block posts-columns box-wrap have-heading" data-current="1">
@@ -633,183 +632,79 @@ get_header()
 									</div>
 									<div class="posts-container">
 										<div class="posts-list post-list-columns">
-											<div class="post-item cat-1">
-												<article class="post-layout list1 post-vertical-center post-list format-standard">
-													<div class="post-list-thumbnail">
-														<div class="entry-thumbnail">
-															<a class="src-custom" href="2023/09/06/winter-dressing-tips-when-its-really-cold-out/index.html" title="Winter Dressing Tips When It&#8217;s Really Cold Out">
-																<div class="thumb-container thumb-custom">
-																	<img decoding="async" width="480" height="725" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12-480x725.jpeg" class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12-480x725.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12-300x453.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12-200x302.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12.jpeg 640w" data-sizes="auto" data-expand="0" loading="eager" />
-																</div>
-															</a>
-														</div>
-													</div>
-													<div class="post-list-desc text-left">
-														<div class="post-desc-inner">
-															<div class="entry-header">
-																<div class="entry-cats">
-																	<a class="post-cat info-text cat-text post-cat-1" href="category/style/index.html">Style</a>
-																</div>
-																<h3 class="entry-title h3">
-																	<a class="title-text" href="2023/09/06/winter-dressing-tips-when-its-really-cold-out/index.html" title="Winter Dressing Tips When It&#8217;s Really Cold Out">Winter Dressing Tips When It&#8217;s Really Cold Out</a>
-																</h3>
-															</div>
-															<div class="entry-excerpt"> Venus has a runaway greenhouse effect. I kind of want to know what happened there because we’re twirling knobs here on Earth without knowing the consequences of it. Mars once</div>
-															<div class="entry-meta no-icons">
-																<div class="meta-item meta-author meta-modern author vcard meta-color">
-																	<div class="author-ava" data-author="J">
-																		<img decoding="async" alt='' src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=35&#038;d=mm&#038;r=g' data-srcset='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=70&#038;d=mm&#038;r=g 2x' class='lazyload avatar avatar-35 photo' height='35' width='35' />
-																	</div>
-																	<div class="meta-modern-desc">
-																		<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe">John Doe</a>
-																		<span class="info-text">3 months ago</span>
-																	</div>
-																</div>
-																<div class="meta-item meta-more">
-																	<a href="2023/09/06/winter-dressing-tips-when-its-really-cold-out/index.html" class="info-text">Keep Reading</a>
+
+											<?php
+											$args = array(
+												'post_type' => 'post', 
+												'posts_per_page' => 5, 
+												'orderby' => 'date',
+												'order' => 'DESC',
+											);
+
+											$query = new WP_Query($args);
+
+											if ($query->have_posts()) :
+												while ($query->have_posts()) : $query->the_post();
+													$image_id=get_post_thumbnail_id();
+													$image_url = wp_get_attachment_image_src($image_id,'img-polaroid');
+													$image_url=$image_url[0];
+													?>
+													<div class="post-item cat-1">
+														<article class="post-layout list1 post-vertical-center post-list format-standard">
+															<div class="post-list-thumbnail">
+																<div class="entry-thumbnail">
+																	<a class="src-custom" href="" title="Winter Dressing Tips When It&#8217;s Really Cold Out">
+																		<div class="thumb-container thumb-custom">
+																			<img decoding="async" width="480" height="725"  class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" src="<?php echo $image_url ?>" />
+																		</div>
+																	</a>
 																</div>
 															</div>
-														</div>
-													</div>
-												</article>
-											</div>
-											<div class="post-item cat-2">
-												<article class="post-layout list1 post-vertical-center post-list format-standard">
-													<div class="post-list-thumbnail">
-														<div class="entry-thumbnail">
-															<a class="src-custom" href="2023/09/06/headsets-are-better-if-youre-playing-games/index.html" title="Headsets Are Better if You&#8217;re Playing Games">
-																<div class="thumb-container thumb-custom">
-																	<img decoding="async" width="480" height="480" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-480x480.jpeg" class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-480x480.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-300x300.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-200x200.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-30x30.jpeg 30w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15.jpeg 640w" data-sizes="auto" data-expand="0" loading="eager" />
-																</div>
-															</a>
-															<div class="p-review mid">5.2</div>
-														</div>
-													</div>
-													<div class="post-list-desc text-left">
-														<div class="post-desc-inner">
-															<div class="entry-header">
-																<div class="entry-cats">
-																	<a class="post-cat info-text cat-text post-cat-2" href="category/gadget/index.html">Gadget</a>
-																</div>
-																<h3 class="entry-title h3">
-																	<a class="title-text" href="2023/09/06/headsets-are-better-if-youre-playing-games/index.html" title="Headsets Are Better if You&#8217;re Playing Games">Headsets Are Better if You&#8217;re Playing Games</a>
-																</h3>
-															</div>
-															<div class="entry-excerpt"> Venus has a runaway greenhouse effect. I kind of want to know what happened there because we’re twirling knobs here on Earth without knowing the consequences of it. Mars once</div>
-															<div class="entry-meta no-icons">
-																<div class="meta-item meta-author meta-modern author vcard meta-color">
-																	<div class="author-ava" data-author="J">
-																		<img decoding="async" alt='' src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=35&#038;d=mm&#038;r=g' data-srcset='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=70&#038;d=mm&#038;r=g 2x' class='lazyload avatar avatar-35 photo' height='35' width='35' />
+															<div class="post-list-desc text-left">
+																<div class="post-desc-inner">
+																	<div class="entry-header">
+																		<div class="entry-cats">
+																			<a class="post-cat info-text cat-text post-cat-1" href="category/style/index.html"><?php the_category() ?></a>
+																		</div>
+																		<h3 class="entry-title h3">
+																			<a class="title-text" href="" title="Winter Dressing Tips When It&#8217;s Really Cold Out"><?php the_title(); ?></a>
+																		</h3>
 																	</div>
-																	<div class="meta-modern-desc">
-																		<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe">John Doe</a>
-																		<span class="info-text">3 months ago</span>
+																	<div class="entry-excerpt"> <?php the_content(); ?></div>
+																	<div class="entry-meta no-icons">
+																		<div class="meta-item meta-author meta-modern author vcard meta-color">
+																			<div class="author-ava" data-author="J">
+																				<img decoding="async" alt='' src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=35&#038;d=mm&#038;r=g' data-srcset='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=70&#038;d=mm&#038;r=g 2x' class='lazyload avatar avatar-35 photo' height='35' width='35' />
+																			</div>
+																			<div class="meta-modern-desc">
+																				<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe"><?php the_author() ?></a>
+																				<span class="info-text"><?php echo get_the_date(); ?></span>
+																			</div>
+																		</div>
+																		<div class="meta-item meta-more">
+																			<a href="<?php the_permalink(); ?>" class="info-text">Keep Reading</a>
+																		</div>
 																	</div>
 																</div>
-																<div class="meta-item meta-more">
-																	<a href="2023/09/06/headsets-are-better-if-youre-playing-games/index.html" class="info-text">Keep Reading</a>
-																</div>
 															</div>
-														</div>
+														</article>
 													</div>
-												</article>
-											</div>
-											<div class="post-item cat-3">
-												<article class="post-layout list1 post-vertical-center post-list format-video">
-													<div class="post-list-thumbnail">
-														<div class="entry-thumbnail">
-															<a class="src-custom" href="2023/09/06/spicy-crispy-chicken-burger-recipe/index.html" title="Spicy Crispy Chicken Burger Recipe">
-																<div class="thumb-container thumb-custom">
-																	<img decoding="async" width="480" height="270" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16-480x270.jpeg" class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16-480x270.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16-300x169.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16-200x113.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16.jpeg 512w" data-sizes="auto" data-expand="0" loading="eager" />
-																</div>
-															</a>
-															<a href="https://www.youtube-nocookie.com/embed/Ub06gV4gzxc?autoplay=1&amp;loop=1&amp;modestbranding=0&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;mute=1" title="Spicy Crispy Chicken Burger Recipe" class="f-icon f-video venobox" data-vbtype="video">
-																<span class="icon-svg">
-																	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-																		<path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z" />
-																	</svg>
-																</span>
-															</a>
-														</div>
-													</div>
-													<div class="post-list-desc text-left">
-														<div class="post-desc-inner">
-															<div class="entry-header">
-																<div class="entry-cats">
-																	<a class="post-cat info-text cat-text post-cat-3" href="category/food/index.html">Food</a>
-																</div>
-																<h3 class="entry-title h3">
-																	<a class="title-text" href="2023/09/06/spicy-crispy-chicken-burger-recipe/index.html" title="Spicy Crispy Chicken Burger Recipe">Spicy Crispy Chicken Burger Recipe</a>
-																</h3>
-															</div>
-															<div class="entry-excerpt"> Venus has a runaway greenhouse effect. I kind of want to know what happened there because we’re twirling knobs here on Earth without knowing the consequences of it. Mars once</div>
-															<div class="entry-meta no-icons">
-																<div class="meta-item meta-author meta-modern author vcard meta-color">
-																	<div class="author-ava" data-author="J">
-																		<img decoding="async" alt='' src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=35&#038;d=mm&#038;r=g' data-srcset='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=70&#038;d=mm&#038;r=g 2x' class='lazyload avatar avatar-35 photo' height='35' width='35' />
-																	</div>
-																	<div class="meta-modern-desc">
-																		<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe">John Doe</a>
-																		<span class="info-text">3 months ago</span>
-																	</div>
-																</div>
-																<div class="meta-item meta-more">
-																	<a href="2023/09/06/spicy-crispy-chicken-burger-recipe/index.html" class="info-text">Keep Reading</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</article>
-											</div>
-											<div class="post-item cat-3">
-												<article class="post-layout list1 post-vertical-center post-list format-standard">
-													<div class="post-list-thumbnail">
-														<div class="entry-thumbnail">
-															<a class="src-custom" href="2023/09/06/surprising-benefits-of-honeydew-melon/index.html" title="Surprising Benefits of Honeydew Melon">
-																<div class="thumb-container thumb-custom">
-																	<img decoding="async" width="480" height="320" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a10-480x320.jpeg" class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a10-480x320.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a10-300x200.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a10-1024x683.jpeg 1024w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a10-200x133.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a10-768x512.jpeg 768w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a10-1536x1024.jpeg 1536w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a10.jpeg 1600w" data-sizes="auto" data-expand="0" loading="eager" />
-																</div>
-															</a>
-														</div>
-													</div>
-													<div class="post-list-desc text-left">
-														<div class="post-desc-inner">
-															<div class="entry-header">
-																<div class="entry-cats">
-																	<a class="post-cat info-text cat-text post-cat-3" href="category/food/index.html">Food</a>
-																</div>
-																<h3 class="entry-title h3">
-																	<a class="title-text" href="2023/09/06/surprising-benefits-of-honeydew-melon/index.html" title="Surprising Benefits of Honeydew Melon">Surprising Benefits of Honeydew Melon</a>
-																</h3>
-															</div>
-															<div class="entry-excerpt"> Venus has a runaway greenhouse effect. I kind of want to know what happened there because we’re twirling knobs here on Earth without knowing the consequences of it. Mars once</div>
-															<div class="entry-meta no-icons">
-																<div class="meta-item meta-author meta-modern author vcard meta-color">
-																	<div class="author-ava" data-author="J">
-																		<img decoding="async" alt='' src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=35&#038;d=mm&#038;r=g' data-srcset='https://secure.gravatar.com/avatar/06ac9198ed2a1093c67c32334849eea6?s=70&#038;d=mm&#038;r=g 2x' class='lazyload avatar avatar-35 photo' height='35' width='35' />
-																	</div>
-																	<div class="meta-modern-desc">
-																		<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe">John Doe</a>
-																		<span class="info-text">3 months ago</span>
-																	</div>
-																</div>
-																<div class="meta-item meta-more">
-																	<a href="2023/09/06/surprising-benefits-of-honeydew-melon/index.html" class="info-text">Keep Reading</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</article>
-											</div>
+													<?php
+												endwhile;
+												wp_reset_postdata(); 
+											else :
+												echo 'No posts found.';
+											endif;
+											?>
 										</div>
 									</div>
-									<div class="box-disable nav-wrap nav-wrap-load-more text-left">
+									<!-- <div class="box-disable nav-wrap nav-wrap-load-more text-left">
 										<div class="nav-wrap-inner">
 											<div class="button module-pagi btn-pagi show-more btn-accent load-more next-posts" data-text="Load More">
 												<span class="more-text text-btn">Load More</span>
 											</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -819,166 +714,94 @@ get_header()
 									<div class="block-slider nav-on_heading">
 										<div class="th90-slider" id="slider-20" data-settings='{&quot;loop&quot;:false,&quot;autoHeight&quot;:false,&quot;center&quot;:false,&quot;autoplay&quot;:false,&quot;nav&quot;:true,&quot;dots&quot;:false,&quot;fade&quot;:false,&quot;speed&quot;:500,&quot;delay&quot;:3000,&quot;t_view&quot;:3,&quot;view&quot;:3,&quot;ms_view&quot;:1,&quot;m_view&quot;:3,&quot;rtl&quot;:false,&quot;asNavFor&quot;:&quot;&quot;,&quot;vertical&quot;:false,&quot;focusOnSelect&quot;:false}'>
 											<div class="widget-heading">
-												<h4 class="title">Living</h4>
+												<h4 class="title">Entertainment</h4>
 												<div class="heading-elm">
 													<div class="slider-arrow"></div>
 												</div>
 											</div>
 											<div class="slider-wrap">
 												<div class="slick-slider">
-													<div class="slider-item">
-														<div class="post-item cat-4">
-															<article class="post-layout medium1 post-medium format-audio">
-																<div class="entry-thumbnail">
-																	<a class="src-4_3" href="2023/09/06/fashion-tips-trends-and-celebrity-style/index.html" title="Fashion, Tips, Trends and Celebrity Style">
-																		<div class="thumb-container thumb-75">
-																			<img decoding="async" width="480" height="289" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-480x289.jpeg" class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-480x289.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-300x181.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-200x121.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-768x463.jpeg 768w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7.jpeg 1000w" data-sizes="auto" data-expand="0" loading="eager" />
-																		</div>
-																	</a>
-																	<div class="f-icon f-audio">
-																		<span class="icon-svg">
-																			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-																				<path d="M20 3v14a4 4 0 1 1-2-3.465V5H9v12a4 4 0 1 1-2-3.465V3h13ZM5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
-																			</svg>
-																		</span>
-																	</div>
-																</div>
-																<div class="post-desc text-left">
-																	<div class="post-desc-inner">
-																		<div class="entry-header">
-																			<div class="entry-cats">
-																				<a class="post-cat info-text cat-text post-cat-4" href="category/living/index.html">Living</a>
-																			</div>
-																			<h3 class="entry-title h5">
-																				<a class="title-text" href="2023/09/06/fashion-tips-trends-and-celebrity-style/index.html" title="Fashion, Tips, Trends and Celebrity Style">Fashion, Tips, Trends and Celebrity Style</a>
-																			</h3>
-																		</div>
-																		<div class="entry-meta no-icons">
-																			<div class="meta-item meta-author author vcard meta-color">
-																				<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe">John Doe</a>
-																			</div>
-																			<div class="meta-item meta-date">
-																				<a class="meta-color" href="2023/09/06/fashion-tips-trends-and-celebrity-style/index.html">
-																					<span class="info-text">3 months ago</span>
+													<?php
+													$categories = get_categories();
+													if ($categories) {
+
+														$first_category = $categories[0]->slug;
+														$args = array(
+															'post_type' => 'post', 
+															'posts_per_page' => 3,
+															'category_name' => $first_category,
+															'orderby' => 'date',
+															'order' => 'DESC',
+														);
+														$query = new WP_Query($args);
+														if ($query->have_posts()) :
+															while ($query->have_posts()) : $query->the_post();
+																$image_id=get_post_thumbnail_id();
+																$image_url = wp_get_attachment_image_src($image_id,'img-polaroid');
+																$image_url=$image_url[0];
+																?>
+																<div class="slider-item">
+																	<div class="post-item cat-4">
+																		<article class="post-layout medium1 post-medium format-audio">
+																			<div class="entry-thumbnail">
+																				<a class="src-4_3" href="" title="Fashion, Tips, Trends and Celebrity Style">
+																					<div class="thumb-container thumb-75">
+																						<img decoding="async" width="480" height="289" src="<?php echo $image_url ?>"/>
+																					</div>
 																				</a>
+																				<div class="f-icon f-audio">
+																					<span class="icon-svg">
+																						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+																							<path d="M20 3v14a4 4 0 1 1-2-3.465V5H9v12a4 4 0 1 1-2-3.465V3h13ZM5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+																						</svg>
+																					</span>
+																				</div>
 																			</div>
-																		</div>
+																			<div class="post-desc text-left">
+																				<div class="post-desc-inner">
+																					<div class="entry-header">
+																						<div class="entry-cats">
+																							<a class="post-cat info-text cat-text post-cat-4" href="category/living/index.html"><?php the_category() ?></a>
+																						</div>
+																						<h3 class="entry-title h5">
+																							<a class="title-text" href="2023/09/06/fashion-tips-trends-and-celebrity-style/index.html" title="Fashion, Tips, Trends and Celebrity Style"><?php the_title(); ?></a>
+																						</h3>
+																					</div>
+																					<div class="entry-meta no-icons">
+																						<div class="meta-item meta-author author vcard meta-color">
+																							<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe"><?php the_author() ?></a>
+																						</div>
+																						<div class="meta-item meta-date">
+																							<a class="meta-color" href="2023/09/06/fashion-tips-trends-and-celebrity-style/index.html">
+																								<span class="info-text"><?php echo get_the_date(); ?></span>
+																							</a>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</article>
 																	</div>
 																</div>
-															</article>
-														</div>
-													</div>
-													<div class="slider-item">
-														<div class="post-item cat-4">
-															<article class="post-layout medium1 post-medium format-standard">
-																<div class="entry-thumbnail">
-																	<a class="src-4_3" href="2023/09/06/for-good-results-must-be-make-good-plan/index.html" title="For Good Results Must Be Make Good Plan">
-																		<div class="thumb-container thumb-75">
-																			<img decoding="async" width="480" height="360" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a1-480x360.jpeg" class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a1-480x360.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a1-300x225.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a1-200x150.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a1.jpeg 512w" data-sizes="auto" data-expand="0" loading="eager" />
-																		</div>
-																	</a>
-																</div>
-																<div class="post-desc text-left">
-																	<div class="post-desc-inner">
-																		<div class="entry-header">
-																			<div class="entry-cats">
-																				<a class="post-cat info-text cat-text post-cat-4" href="category/living/index.html">Living</a>
-																			</div>
-																			<h3 class="entry-title h5">
-																				<a class="title-text" href="2023/09/06/for-good-results-must-be-make-good-plan/index.html" title="For Good Results Must Be Make Good Plan">For Good Results Must Be Make Good Plan</a>
-																			</h3>
-																		</div>
-																		<div class="entry-meta no-icons">
-																			<div class="meta-item meta-author author vcard meta-color">
-																				<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe">John Doe</a>
-																			</div>
-																			<div class="meta-item meta-date">
-																				<a class="meta-color" href="2023/09/06/for-good-results-must-be-make-good-plan/index.html">
-																					<span class="info-text">3 months ago</span>
-																				</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</article>
-														</div>
-													</div>
-													<div class="slider-item">
-														<div class="post-item cat-4">
-															<article class="post-layout medium1 post-medium format-standard">
-																<div class="entry-thumbnail">
-																	<a class="src-4_3" href="2023/09/06/how-to-do-the-superman-standing-exercise/index.html" title="How to Do the Superman Standing Exercise">
-																		<div class="thumb-container thumb-75">
-																			<img decoding="async" width="480" height="356" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a8-480x356.jpeg" class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a8-480x356.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a8-300x222.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a8-200x148.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a8.jpeg 640w" data-sizes="auto" data-expand="0" loading="eager" />
-																		</div>
-																	</a>
-																</div>
-																<div class="post-desc text-left">
-																	<div class="post-desc-inner">
-																		<div class="entry-header">
-																			<div class="entry-cats">
-																				<a class="post-cat info-text cat-text post-cat-4" href="category/living/index.html">Living</a>
-																			</div>
-																			<h3 class="entry-title h5">
-																				<a class="title-text" href="2023/09/06/how-to-do-the-superman-standing-exercise/index.html" title="How to Do the Superman Standing Exercise">How to Do the Superman Standing Exercise</a>
-																			</h3>
-																		</div>
-																		<div class="entry-meta no-icons">
-																			<div class="meta-item meta-author author vcard meta-color">
-																				<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe">John Doe</a>
-																			</div>
-																			<div class="meta-item meta-date">
-																				<a class="meta-color" href="2023/09/06/how-to-do-the-superman-standing-exercise/index.html">
-																					<span class="info-text">3 months ago</span>
-																				</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</article>
-														</div>
-													</div>
-													<div class="slider-item">
-														<div class="post-item cat-4">
-															<article class="post-layout medium1 post-medium format-standard">
-																<div class="entry-thumbnail">
-																	<a class="src-4_3" href="2023/09/06/comfortable-pairs-of-sneakers-to-walk-all-day/index.html" title="Comfortable Pairs of Sneakers to Walk All Day">
-																		<div class="thumb-container thumb-75">
-																			<img decoding="async" width="480" height="289" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a6-480x289.jpeg" class="lazyload attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a6-480x289.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a6-300x181.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a6-200x121.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a6-768x463.jpeg 768w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a6.jpeg 1000w" data-sizes="auto" data-expand="0" loading="eager" />
-																		</div>
-																	</a>
-																</div>
-																<div class="post-desc text-left">
-																	<div class="post-desc-inner">
-																		<div class="entry-header">
-																			<div class="entry-cats">
-																				<a class="post-cat info-text cat-text post-cat-4" href="category/living/index.html">Living</a>
-																			</div>
-																			<h3 class="entry-title h5">
-																				<a class="title-text" href="2023/09/06/comfortable-pairs-of-sneakers-to-walk-all-day/index.html" title="Comfortable Pairs of Sneakers to Walk All Day">Comfortable Pairs of Sneakers to Walk All Day</a>
-																			</h3>
-																		</div>
-																		<div class="entry-meta no-icons">
-																			<div class="meta-item meta-author author vcard meta-color">
-																				<a href="author/admin/index.html" class="info-text author-name url fn" rel="author" title="Posts by John Doe">John Doe</a>
-																			</div>
-																			<div class="meta-item meta-date">
-																				<a class="meta-color" href="2023/09/06/comfortable-pairs-of-sneakers-to-walk-all-day/index.html">
-																					<span class="info-text">3 months ago</span>
-																				</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</article>
-														</div>
-													</div>
+																<?php
+															endwhile;
+															wp_reset_postdata();
+														else :
+															echo 'No posts found in the category.';
+														endif;
+													} else {
+														echo 'No categories found.';
+													}
+													?>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							
+
+
+
 						</div>
 						<div class="elementor-element elementor-element-bf2c341 elementor-widget elementor-widget-g-postsgroup" data-id="bf2c341" data-element_type="widget" data-widget_type="g-postsgroup.default">
 							<div class="elementor-widget-container">
@@ -1298,66 +1121,38 @@ get_header()
 										<h4 class="title">Categories</h4>
 									</div>
 									<div class="tax-hero">
-										<div class="term-item term-1">
-											<div class="post-hero">
-												<div class="thumb-container" style="padding-bottom:150.9375%;">
-													<img decoding="async" width="200" height="302" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12-200x302.jpeg" class="lazyload attachment-thumbnail size-thumbnail" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12-200x302.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12-300x453.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12-480x725.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a12.jpeg 640w" data-sizes="auto" data-expand="0" loading="eager" />
-												</div>
-												<div class="post-desc bg-dark desc-hero">
-													<a class="hero-link" href="category/style/index.html" title="Style"></a>
-													<div class="term-desc">
-														<div class="term-title"> Style</div>
-														<div class="term-count"> 4</div>
+										<?php
+										$categories = get_categories();
+
+										if ($categories) {
+											foreach ($categories as $category) {
+												$category_link = get_category_link($category->cat_ID);
+												?>
+												<div class="term-item term-1">
+													<div class="post-hero">
+														<div class="thumb-container" style="padding-bottom:150.9375%;">
+															<!-- <img decoding="async" width="200" height="302" src="<?php echo $image_url ?>" class="lazyload attachment-thumbnail size-thumbnail" alt="" /> -->
+														</div>
+														<div class="post-desc bg-dark desc-hero">
+															<a class="hero-link" href="" title="Style"></a>
+															<div class="term-desc">
+																<div class="term-title"> <?php echo esc_html($category->name); ?></div>
+																<div class="term-count"> <?php echo esc_html($category->count) ?> </div>
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-										<div class="term-item term-4">
-											<div class="post-hero">
-												<div class="thumb-container" style="padding-bottom:60.3%;">
-													<img decoding="async" width="200" height="121" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-200x121.jpeg" class="lazyload attachment-thumbnail size-thumbnail" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-200x121.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-300x181.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-768x463.jpeg 768w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7-480x289.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a7.jpeg 1000w" data-sizes="auto" data-expand="0" loading="eager" />
-												</div>
-												<div class="post-desc bg-dark desc-hero">
-													<a class="hero-link" href="category/living/index.html" title="Living"></a>
-													<div class="term-desc">
-														<div class="term-title"> Living</div>
-														<div class="term-count"> 4</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="term-item term-2">
-											<div class="post-hero">
-												<div class="thumb-container" style="padding-bottom:100%;">
-													<img decoding="async" width="200" height="200" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-200x200.jpeg" class="lazyload attachment-thumbnail size-thumbnail" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-200x200.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-300x300.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-30x30.jpeg 30w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15-480x480.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a15.jpeg 640w" data-sizes="auto" data-expand="0" loading="eager" />
-												</div>
-												<div class="post-desc bg-dark desc-hero">
-													<a class="hero-link" href="category/gadget/index.html" title="Gadget"></a>
-													<div class="term-desc">
-														<div class="term-title"> Gadget</div>
-														<div class="term-count"> 4</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="term-item term-3">
-											<div class="post-hero">
-												<div class="thumb-container" style="padding-bottom:56.25%;">
-													<img decoding="async" width="200" height="113" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16-200x113.jpeg" class="lazyload attachment-thumbnail size-thumbnail" alt="" data-srcset="https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16-200x113.jpeg 200w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16-300x169.jpeg 300w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16-480x270.jpeg 480w, https://tmrwstudio.me/atlas/default/wp-content/uploads/sites/2/2023/09/a16.jpeg 512w" data-sizes="auto" data-expand="0" loading="eager" />
-												</div>
-												<div class="post-desc bg-dark desc-hero">
-													<a class="hero-link" href="category/food/index.html" title="Food"></a>
-													<div class="term-desc">
-														<div class="term-title"> Food</div>
-														<div class="term-count"> 4</div>
-													</div>
-												</div>
-											</div>
-										</div>
+												<?php 
+											}
+										} else {
+											echo 'No categories found.';
+										}
+										?>
 									</div>
 								</div>
 							</div>
 						</div>
+
 						<div class="elementor-element elementor-element-7d5a290 elementor-widget elementor-widget-p-postssmall" data-id="7d5a290" data-element_type="widget" data-widget_type="p-postssmall.default">
 							<div class="elementor-widget-container">
 								<div id="th90-block_24" class="th90-block posts-columns post_sep-yes box-wrap have-heading" data-current="1">
