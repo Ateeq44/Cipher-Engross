@@ -239,7 +239,7 @@
 		}
 	</style>
 </head>
-<body class="home page-template page-template-page-front page-template-page-front-php page page-id-41 wp-embed-responsive theme-atlas woocommerce-no-js s-front  site-skin site-light box-solid wheading-simple is-lazyload sticky-header-active lazy-no-placeholder sticky-sidebar sidebar-full elementor-default elementor-kit-6 elementor-page elementor-page-41">
+<body class="home page-template page-template-page-front page-template-page-front-php page page-id-41 wp-embed-responsive theme-atlas woocommerce-no-js s-front  site-skin site-light box-solid wheading-simple is-lazyload sticky-header-active lazy-no-placeholder sticky-sidebar sidebar-full elementor-default elementor-kit-6 elementor-page elementor-page-41" style="margin-top: -32px;">
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 		<header id="site-header" class="site-header">
@@ -301,20 +301,6 @@
 								</div>
 							</div>
 							<div class="elementor-element elementor-element-371cae5 e-con-full bg-transparent e-flex sticky-no is-skin bg-el bg-inherit bg-light nochange-no e-con e-child" data-id="371cae5" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;container_type&quot;:&quot;flex&quot;}">
-								<div class="elementor-element elementor-element-58955b5 elementor-widget elementor-widget-e-triggercart" data-id="58955b5" data-element_type="widget" data-widget_type="e-triggercart.default">
-									<div class="elementor-widget-container">
-										<div class="trigger-wrap">
-											<a href="cart/index.html" title="Cart" class="cart-trigger button btn-content_icon btn-large btn-text">
-												<span class="icon-svg">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-														<path d="M2.123 4.25h2.166a.25.25 0 0 1 .246.205l1.701 9.358a1.75 1.75 0 0 0 1.722 1.437h11.363c.82 0 1.531-.57 1.708-1.37l1.556-7a1.75 1.75 0 0 0-1.708-2.13H9.123a.75.75 0 0 0 0 1.5h11.754a.251.251 0 0 1 .244.304l-1.556 7a.25.25 0 0 1-.244.196H7.958a.25.25 0 0 1-.246-.205L6.011 4.187A1.752 1.752 0 0 0 4.289 2.75H2.123a.75.75 0 0 0 0 1.5zm16 11.5a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 1 0 0-5.5zm-8.5 0a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 1 0 0-5.5z" />
-													</svg>
-												</span>
-												<span class="shopping-cart-counter count-0"> 0 </span>
-											</a>
-										</div>
-									</div>
-								</div>
 								<div class="elementor-element elementor-element-f2448b0 elementor-widget elementor-widget-w-socialcounters" data-id="f2448b0" data-element_type="widget" data-widget_type="w-socialcounters.default">
 									<div class="elementor-widget-container">
 										<div id="th90-block_10" class="th90-block block-counters counters-inline box-wrap box-disable">
@@ -329,7 +315,7 @@
 														<span class="counter-text">Twitter</span>
 													</span>
 													<span class="counter-desc">
-														<span class="cmeta"> 30K </span>
+														<span class="cmeta"> 30K</span>
 													</span>
 												</a>
 											</div>
