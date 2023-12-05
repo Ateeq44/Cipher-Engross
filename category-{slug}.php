@@ -7,7 +7,7 @@ get_header();
 
         <header class="page-header">
             <h1 class="page-title">
-                <?php single_cat_title('Currently browsing the archives for the '); echo ' '; single_cat_title('', true); ?>
+                <?php single_cat_title('Archive for the '); echo ' '; single_cat_title('', true); ?>
             </h1>
         </header>
 
@@ -15,7 +15,7 @@ get_header();
         while (have_posts()) :
             the_post();
 
-            // Your category content here
+            ds
 
         endwhile;
         ?>

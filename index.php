@@ -1350,6 +1350,13 @@ get_header()
 					</div>
 				</div>
 			</div>
+			<?php
+$categories = get_categories();
+foreach ($categories as $category) {
+    $category_link = get_category_link($category->cat_ID);
+    echo "<a href='{$category_link}'>{$category->name}</a>";
+}
+?>
 		</div>
 
 		<?php 
