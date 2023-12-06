@@ -1146,7 +1146,7 @@ get_header()
 								<h4 class="title">Join Us</h4>
 							</div>
 							<div class="social-counters">
-								<a class="social-counter" href="#" target="_blank">
+								<a class="social-counter" href="" target="_blank">
 									<span class="counter-icon social-icon counter-facebook">
 										<span class="icon-svg">
 											<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -1156,10 +1156,10 @@ get_header()
 									</span>
 									<span class="counter-desc">
 										<span class="counter-text">Facebook</span>
-										<span class="cmeta cmeta-facebook"> 42.4K </span>
+										<!-- <span class="cmeta cmeta-facebook"> 42.4K </span> -->
 									</span>
 								</a>
-								<a class="social-counter" href="#" target="_blank">
+								<a class="social-counter" href="https://twitter.com/cipherengross" target="_blank">
 									<span class="counter-icon social-icon counter-twitter">
 										<span class="icon-svg">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -1169,10 +1169,10 @@ get_header()
 									</span>
 									<span class="counter-desc">
 										<span class="counter-text">Twitter</span>
-										<span class="cmeta cmeta-twitter"> 36.2K </span>
+										<!-- <span class="cmeta cmeta-twitter"> 360 </span> -->
 									</span>
 								</a>
-								<a class="social-counter" href="#" target="_blank">
+								<a class="social-counter" href="https://www.instagram.com/cipherengross/" target="_blank">
 									<span class="counter-icon social-icon counter-instagram">
 										<span class="icon-svg">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1182,20 +1182,18 @@ get_header()
 									</span>
 									<span class="counter-desc">
 										<span class="counter-text">Instagram</span>
-										<span class="cmeta cmeta-instagram"> 24.6K </span>
+										<!-- <span class="cmeta cmeta-instagram"> 24.6K </span> -->
 									</span>
 								</a>
-								<a class="social-counter" href="#" target="_blank">
-									<span class="counter-icon social-icon counter-twitch">
+								<a class="social-counter" href="https://www.pinterest.com/cipherengross/" target="_blank">
+									<span class="counter-icon social-icon counter-pinterest">
 										<span class="icon-svg">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-												<path d="M391.17,103.47H352.54v109.7h38.63ZM285,103H246.37V212.75H285ZM120.83,0,24.31,91.42V420.58H140.14V512l96.53-91.42h77.25L487.69,256V0ZM449.07,237.75l-77.22,73.12H294.61l-67.6,64v-64H140.14V36.58H449.07Z" />
-											</svg>
+											<svg class="gUZ GjR U9O kVc" height="24" width="24" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img"><path d="M0 12c0 5.123 3.211 9.497 7.73 11.218-.11-.937-.227-2.482.025-3.566.217-.932 1.401-5.938 1.401-5.938s-.357-.715-.357-1.774c0-1.66.962-2.9 2.161-2.9 1.02 0 1.512.765 1.512 1.682 0 1.025-.653 2.557-.99 3.978-.281 1.189.597 2.159 1.769 2.159 2.123 0 3.756-2.239 3.756-5.471 0-2.861-2.056-4.86-4.991-4.86-3.398 0-5.393 2.549-5.393 5.184 0 1.027.395 2.127.889 2.726a.36.36 0 0 1 .083.343c-.091.378-.293 1.189-.332 1.355-.053.218-.173.265-.4.159-1.492-.694-2.424-2.875-2.424-4.627 0-3.769 2.737-7.229 7.892-7.229 4.144 0 7.365 2.953 7.365 6.899 0 4.117-2.595 7.431-6.199 7.431-1.211 0-2.348-.63-2.738-1.373 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12"></path></svg>
 										</span>
 									</span>
 									<span class="counter-desc">
-										<span class="counter-text">Twitch</span>
-										<span class="cmeta cmeta-twitch"> 83.4K </span>
+										<span class="counter-text">Pinterest</span>
+										<!-- <span class="cmeta cmeta-twitch"> 83.4K </span> -->
 									</span>
 								</a>
 							</div>

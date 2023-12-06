@@ -19,6 +19,29 @@ function theme_customizer_settings($wp_customize) {
         'section' => 'theme_logo_section',
         'settings' => 'theme_logo',
     )));
+
+
+     $wp_customize->add_section('logo_settings', array(
+        'title'    => __('Logo Settings', 'your-theme-textdomain'),
+        'priority' => 30,
+    ));
+
+    // Add a control for logo size
+    $wp_customize->add_setting('logo_size', array(
+        'default'           => 'medium',
+        'sanitize_callback' => 'sanitize_key',
+    ));
+
+    $wp_customize->add_control('logo_size', array(
+        'label'   => __('Logo Size', 'your-theme-textdomain'),
+        'section' => 'logo_settings',
+        'type'    => 'radio',
+        'choices' => array(
+            'small'  => __('Small', 'your-theme-textdomain'),
+            'medium' => __('Medium', 'your-theme-textdomain'),
+            'large'  => __('Large', 'your-theme-textdomain'),
+        ),
+    ));
 }
 
 add_action('customize_register', 'theme_customizer_settings');
@@ -88,6 +111,8 @@ function register_custom_recent_comments_widget() {
 }
 
 add_action('widgets_init', 'register_custom_recent_comments_widget');
+
+
 
 
 

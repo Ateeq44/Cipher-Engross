@@ -16,6 +16,10 @@
 	<link data-optimized="2" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-9.css" />
 	<link data-optimized="2" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-10.css" />
 	<link data-optimized="2" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-11.css" />
+	<!-- Include Facebook JavaScript SDK -->
+<div id="fb-root"></div>
+
+
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/x-icon" href="<?php echo esc_url(get_theme_mod('theme_favicon')); ?>">
