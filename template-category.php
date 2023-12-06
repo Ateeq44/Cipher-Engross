@@ -1,7 +1,5 @@
 <?php
-/**
- * Template Name: Category Custom Page
- */
+
  
 get_header(); ?>
  

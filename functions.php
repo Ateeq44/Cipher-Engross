@@ -37,7 +37,57 @@ function register_my_menus() {
 add_action('init', 'register_my_menus');
 
 
+class Custom_Recent_Comments_Widget extends WP_Widget {
 
+    // Widget setup.
+    function __construct() {
+        parent::__construct(
+            'custom_recent_comments_widget',
+            'Custom Recent Comments',
+            array('description' => 'Display recent comments in the sidebar.')
+        );
+    }
+
+    // How to display the widget on the screen.
+    function widget($args, $instance) {
+        echo $args['before_widget'];
+
+        echo '<aside id="recent-comments" class="widget">';
+        echo '<h2 class="widget-title">Recent Comments</h2>';
+        echo '<ul>';
+
+        // Get recent comments
+        $comments_args = array(
+            'number'      => 5,      // Number of comments to display
+            'status'      => 'approve',
+            'post_status' => 'publish',
+        );
+
+        $comments_query = new WP_Comment_Query;
+        $comments = $comments_query->query($comments_args);
+
+        // Display recent comments
+        foreach ($comments as $comment) {
+            echo '<li>';
+            echo '<a href="' . esc_url(get_comment_link($comment)) . '">';
+            echo esc_html(get_comment_author()) . ': ' . esc_html($comment->comment_content);
+            echo '</a>';
+            echo '</li>';
+        }
+
+        echo '</ul>';
+        echo '</aside>';
+
+        echo $args['after_widget'];
+    }
+}
+
+// Register the widget
+function register_custom_recent_comments_widget() {
+    register_widget('Custom_Recent_Comments_Widget');
+}
+
+add_action('widgets_init', 'register_custom_recent_comments_widget');
 
 
 

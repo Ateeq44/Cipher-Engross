@@ -414,21 +414,28 @@
 						<div class="section-inner box-wrap">
 							<div class="mob_header-logo header-elements">
 								<a href="index.html" class="logo-site logo" title="Cipher Engross">
-									<img class="logo-img" alt="Cipher Engross" src="<?php echo get_template_directory_uri(); ?>/assets/images/c-engross.png" width="129" height="39">
+									<?php
+											$logo_url = get_theme_mod('theme_logo');
+											if ($logo_url) {
+												echo '<img class="logo-img" alt="Cipher Engross" src="' . esc_url($logo_url) . '" width="129" height="39">';
+											} else {
+												echo 'Site Title';
+											}
+											?>
 								</a>
 								<a href="index.html" class="logo-site logo_dark" title="Cipher Engross">
-									<img class="logo-img" alt="Cipher Engross" src="<?php echo get_template_directory_uri(); ?>/assets/images/c-engross.png" width="129" height="39">
+									<?php
+											$logo_url = get_theme_mod('theme_logo');
+											if ($logo_url) {
+												echo '<img class="logo-img" alt="Cipher Engross" src="' . esc_url($logo_url) . '" width="129" height="39">';
+											} else {
+												echo 'Site Title';
+											}
+											?>
 								</a>
 							</div>
 							<div class="header-elements">
-								<a href="cart/index.html" title="Cart" class="cart-trigger button btn-content_icon btn-large btn-text">
-									<span class="icon-svg">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M2.123 4.25h2.166a.25.25 0 0 1 .246.205l1.701 9.358a1.75 1.75 0 0 0 1.722 1.437h11.363c.82 0 1.531-.57 1.708-1.37l1.556-7a1.75 1.75 0 0 0-1.708-2.13H9.123a.75.75 0 0 0 0 1.5h11.754a.251.251 0 0 1 .244.304l-1.556 7a.25.25 0 0 1-.244.196H7.958a.25.25 0 0 1-.246-.205L6.011 4.187A1.752 1.752 0 0 0 4.289 2.75H2.123a.75.75 0 0 0 0 1.5zm16 11.5a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 1 0 0-5.5zm-8.5 0a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 1 0 0-5.5z" />
-										</svg>
-									</span>
-									<span class="shopping-cart-counter count-0"> 0 </span>
-								</a>
+								
 								<div class="search-trigger button btn-content_icon btn-large btn-text">
 									<span class="icon-svg">
 										<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="3" style="fill:none" viewBox="0 0 24 24">
